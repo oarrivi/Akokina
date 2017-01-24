@@ -50,8 +50,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UsersDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Akokina.Data\Akokina.Data.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>Akokina.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Akokina\Akokina\Akokina.csproj">
+      <Project>{8084b069-6f56-4170-bb22-a7a809d912fc}</Project>
+      <Name>Akokina</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
