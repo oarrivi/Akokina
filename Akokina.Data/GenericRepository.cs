@@ -13,7 +13,6 @@ namespace Akokina.Data
         void Insert(TEntity entity);
         void Update(TEntity entity);
         void Delete(TKey id);
-        void SaveChanges();
     }
 
     public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
@@ -48,9 +47,5 @@ namespace Akokina.Data
             throw new NotImplementedException();
         }
 
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

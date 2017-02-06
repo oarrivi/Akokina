@@ -145,7 +145,7 @@ namespace Akokina.Data.Tests
             Assert.AreEqual(2, remoteData.GetUsers().Count(), "Remote repository doesn't have the expected number of users.");
             Assert.IsNotNull(remoteData.GetUsers().FirstOrDefault(user => user.Username == "new"));
 
-            Assert.IsTrue(dataManager.UsersToBeSynchronized.Any());
+            Assert.IsFalse(dataManager.UsersToBeSynchronized.Any());
         }
 
 

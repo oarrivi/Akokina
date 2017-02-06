@@ -13,12 +13,13 @@ namespace Akokina.Data
         void AddUser(User entity);
         void AddUsers(IEnumerable<User> entities);
         void DeleteUsers();
-
+        IEnumerable<User> NotSynchronizedUsers { get; }
     }
 
     public class LocalDataManager : ILocalDataManager
     {
         Dictionary<int, User> _data;
+        Dictionary<int, User> _sync;
 
         public LocalDataManager()
         {
@@ -74,6 +75,11 @@ namespace Akokina.Data
         public void DeleteUsers()
         {
             _data.Clear();
+        }
+
+        public IEnumerable<User> NotSynchronizedUsers
+        {
+            get { return _sync.Values; }
         }
     }
 }

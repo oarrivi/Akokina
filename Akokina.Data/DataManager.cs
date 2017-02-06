@@ -18,15 +18,12 @@ namespace Akokina.Data
     public class DataManager : IDataManager
     {
         readonly ILocalDataManager _userLocalRepository = null;
-        readonly ILocalDataManager _userToBeSyncRepository = null;
         readonly IRemoteDataManager _userRemoteRepository = null;
 
         public DataManager(ILocalDataManager userLocalRepository,
-                           ILocalDataManager userToBeSyncRepository,
                            IRemoteDataManager userRemoteRepository)
         {
             _userLocalRepository = userLocalRepository;
-            _userToBeSyncRepository = userToBeSyncRepository;
             _userRemoteRepository = userRemoteRepository;
             UsersLastSynchronizationUTC = new DateTime(2000, 1, 1);
         }
@@ -41,7 +38,7 @@ namespace Akokina.Data
         {
             get
             {
-                return _userToBeSyncRepository.GetUsers();
+                return _userLocalRepository.NotSynchronizedUsers;
             }
         }
 
