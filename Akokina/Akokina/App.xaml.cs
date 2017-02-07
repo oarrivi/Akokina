@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Akokina.Model;
+using Akokina.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,42 @@ namespace Akokina
         {
             InitializeComponent();
 
-            MainPage = new Akokina.MainPage();
+            ISettingsController settings = new SettingsController();
+
+            // Validate Configuration
+            if (settings.IsNotInitialized())
+            {
+                MainPage = new NavigationPage(new SettingsPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+        }
+
+        bool IsConfigurationValid()
+        {
+            return UserAlreadyRegistered() && RemoteServerConfigured();
+        }
+
+        bool UserAlreadyRegistered()
+        {
+            if(this.Properties.ContainsKey(PropertyKeys.CurrentUserIdKey))
+            {
+                int id = (int)this.Properties[PropertyKeys.CurrentUserIdKey];
+                return id != 0;
+            }
+            return false;
+        }
+
+        bool RemoteServerConfigured()
+        {
+            if (this.Properties.ContainsKey(PropertyKeys.WebServerUriKey))
+            {
+                string uri = (string)this.Properties[PropertyKeys.WebServerUriKey];
+                return !string.IsNullOrEmpty(uri);
+            }
+            return false;
         }
 
         protected override void OnStart()

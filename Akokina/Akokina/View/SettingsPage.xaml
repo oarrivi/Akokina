@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:Akokina.Helpers"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="Akokina.View.SettingsPage"
+             Title="{ Binding PageTitle }">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <!-- Settings -->
+        <ScrollView Grid.Row="0" >
+            <StackLayout Margin="8">
+                <Label Text="Usuario" 
+                       Style="{ DynamicResource SubtitleStyle }" />
+                
+                <Entry Text="{ Binding Username }" 
+                       Placeholder="Nombre"
+                       Keyboard="Text"
+                       Style="{ DynamicResource BodyStyle }"
+                       Margin="8"/>
+                
+                <Entry Text="{ Binding UserEmail }"
+                       Placeholder="Correo electrónico"
+                       Keyboard="Email"
+                       Style="{ DynamicResource BodyStyle }"
+                       Margin="8"/>
+
+                <Label Text="Avatar" 
+                       Style="{ DynamicResource BodyStyle }" 
+                       Margin="8"/>
+
+                <Grid x:Name="GridAvatars" HorizontalOptions="Center">
+                    
+                </Grid>
+
+                <Label Text="Servidor de datos" 
+                       Style="{ DynamicResource SubtitleStyle }" 
+                       Margin="8,24,8,8"/>
+
+                <Entry Text="{ Binding WebServerUri }"
+                       Placeholder="URL"
+                       Keyboard="Url"
+                       Style="{ DynamicResource BodyStyle }"
+                       Margin="8"/>
+                <Button Text="Probar"
+                        HorizontalOptions="Center" />
+
+            </StackLayout>
+        </ScrollView>
+        
+        <!-- Toolbar -->
+        <StackLayout Grid.Row="1" Margin="8"
+                     Orientation="Horizontal"                     
+                     VerticalOptions="Center"
+                     HorizontalOptions="End">
+            <Button Text="Cancelar" />
+            <Button Text="Hecho" />
+            
+        </StackLayout>
+    </Grid>
+             
+</ContentPage>

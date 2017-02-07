@@ -33,7 +33,7 @@ namespace Akokina.Data.Tests
                 Initials = "US",
                 Email = "username@email.com",
                 Avatar = 0,
-                Color = "Yellow"
+                //Color = "Yellow"
             });
 
             // Remote data has some entities
