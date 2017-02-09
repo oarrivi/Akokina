@@ -7,7 +7,7 @@
         <!-- Application resource dictionary -->
         <ResourceDictionary>
             <!-- Helpers -->
-            <helpers:EmbeddedResourceKeyToImageSourceConverter x:Key="EmbeddedResourceKeyToImageSourceConverter" />
+            <helpers:AvatarIdToImageSourceConverter x:Key="AvatarIdToImageSourceConverter" />
             
             <!-- Colors Palette -->
             <Color x:Key="DarkPrimaryColor">#E64A19</Color>
@@ -18,6 +18,16 @@
             <Color x:Key="PrimaryTextColor">#212121</Color>
             <Color x:Key="SecundaryTextColor">#757575</Color>
             <Color x:Key="DividerColor">#BDBDBD</Color>
+            
+            <!-- ListItem Styles -->
+            <Style x:Key="ListItemMainTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{ StaticResource PrimaryTextColor }" />
+            </Style>
+            <Style x:Key="ListItemDetailTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="{ StaticResource SecundaryTextColor }" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

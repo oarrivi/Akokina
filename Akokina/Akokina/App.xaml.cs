@@ -18,14 +18,16 @@ namespace Akokina
             ISettingsController settings = new SettingsController();
 
             // Validate Configuration
-            if (settings.IsNotInitialized())
-            {
-                MainPage = new NavigationPage(new SettingsPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new MainPage());
-            }
+            //if (!settings.IsNotInitialized())
+            //{
+            //    MainPage = new NavigationPage(new SettingsPage());
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new MainPage());
+            //}
+            //MainPage = new NavigationPage(new MainPage());
+            MainPage = new FriendsPage();
         }
 
         bool IsConfigurationValid()

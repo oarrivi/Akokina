@@ -57,9 +57,7 @@
                      Orientation="Horizontal"                     
                      VerticalOptions="Center"
                      HorizontalOptions="End">
-            <Button Text="Cancelar" />
-            <Button Text="Hecho" />
-            
+            <Button Text="Hecho" Command="{ Binding CommitChangesCommand }" />            
         </StackLayout>
     </Grid>
              

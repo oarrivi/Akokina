@@ -90,6 +90,7 @@ namespace Akokina.ViewModel
                 }
                 _userName = value;
                 RaisePropertyChanged(UserNamePropertyName);
+                OnSettingsPropertyChanged();
             }
         }
 
@@ -122,6 +123,7 @@ namespace Akokina.ViewModel
                 }
                 _userEmail = value;
                 RaisePropertyChanged(UserEmailPropertyName);
+                OnSettingsPropertyChanged();
             }
         }
 
@@ -309,13 +311,14 @@ namespace Akokina.ViewModel
             }
         }
 
-        private bool CanExecuteCommitChangesCommand()
+        bool CanExecuteCommitChangesCommand()
         {
             return !string.IsNullOrEmpty(this.UserName) &&
-                !string.IsNullOrEmpty(this.WebServerUri);
+                   !string.IsNullOrEmpty(this.UserEmail) &&
+                   !string.IsNullOrEmpty(this.WebServerUri);
         }
 
-        private void ExecuteCommitChangesCommand()
+        void ExecuteCommitChangesCommand()
         {
             if (!this.CommitChangesCommand.CanExecute(null))
             {
@@ -334,7 +337,7 @@ namespace Akokina.ViewModel
             }
         }
 
-        private bool ValidateConnection()
+        bool ValidateConnection()
         {
             this.ValidationMessage = "No se ha podido conectar con el servicio. Intentelo más tarde.";
             return true;

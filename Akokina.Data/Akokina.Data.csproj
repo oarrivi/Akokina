@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="Entity\Group.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
