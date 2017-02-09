@@ -8,7 +8,9 @@
         <ResourceDictionary>
             <!-- Helpers -->
             <helpers:AvatarIdToImageSourceConverter x:Key="AvatarIdToImageSourceConverter" />
-            
+            <helpers:GroupIdToImageSourceConverter x:Key="GroupIdToImageSourceConverter" />
+            <helpers:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
+
             <!-- Colors Palette -->
             <Color x:Key="DarkPrimaryColor">#E64A19</Color>
             <Color x:Key="PrimaryColor">#FF5722</Color>

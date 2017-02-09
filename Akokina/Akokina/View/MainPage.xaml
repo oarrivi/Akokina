@@ -2,11 +2,17 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:Akokina"
+            xmlns:vm="clr-namespace:Akokina.ViewModel"
             xmlns:view="clr-namespace:Akokina.View"
+            xmlns:helper="clr-namespace:Akokina.Helpers"
             x:Class="Akokina.MainPage"
             Title="Apokina">
+    <TabbedPage.BindingContext>
+        <vm:MainViewModel />
+    </TabbedPage.BindingContext>
 
+    <view:GroupsPage />
     <view:FriendsPage />
-    <view:SettingsPage />
+    
 
 </TabbedPage>

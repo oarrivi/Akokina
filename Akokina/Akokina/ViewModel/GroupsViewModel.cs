@@ -1,58 +1,47 @@
 ﻿using Akokina.Model;
+using Akokina.Services;
 using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Akokina.ViewModel
 {
-    public class FriendsViewModel : PageBaseViewModel
+    public class GroupsViewModel : PageBaseViewModel
     {
-        public FriendsViewModel()
-        {
-            this.PageTitle = "Amigos";
 
+        public GroupsViewModel() : base()
+        {
+            this.PageTitle = "Listas";
             Initialize();
         }
 
         private void Initialize()
         {
-            var friends = MockDataFactory.Default.GetFriendsOf(1);
-
-            this.Friends = new ObservableCollection<ObservableUserSummary>(friends);
+            this.Groups = new ObservableCollection<ObservableGroupSummary>(MockDataFactory.Default.GetGroups());
             this.CurrentFriend = MockDataFactory.Default.GetFriendSummary(1);
         }
-        
-        #region Property Friends
+
+        #region Property Groups
+
+        private ObservableCollection<ObservableGroupSummary> _groups = null;
 
         /// <summary>
-        /// The <see cref="Friends" /> property's name.
-        /// </summary>
-        public const string FriendsPropertyName = "Friends";
-
-        private ObservableCollection<ObservableUserSummary> _friends = null;
-
-        /// <summary>
-        /// Sets and gets the Friends property.
+        /// Sets and gets the Groups property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public ObservableCollection<ObservableUserSummary> Friends
+        public ObservableCollection<ObservableGroupSummary> Groups
         {
             get
             {
-                return _friends;
+                return _groups;
             }
             set
             {
-                if (_friends == value)
+                if (_groups == value)
                 {
                     return;
                 }
-                _friends = value;
-                RaisePropertyChanged(FriendsPropertyName);
+                _groups = value;
+                RaisePropertyChanged(() => Groups);
             }
         }
 
@@ -85,35 +74,38 @@ namespace Akokina.ViewModel
 
         #endregion
 
-        #region Command AddFriend
+        #region Command OpenGroup
 
-        private RelayCommand _addFriendCommand;
+        private RelayCommand _openGroupCommand;
 
         /// <summary>
-        /// Gets the AddFriend command.
+        /// Gets the OpenGroup command.
         /// </summary>
-        public RelayCommand AddFriendCommand
+        public RelayCommand OpenGroupCommand
         {
             get
             {
-                return _addFriendCommand
-                    ?? (_addFriendCommand = new RelayCommand(
+                return _openGroupCommand
+                    ?? (_openGroupCommand = new RelayCommand(
                     () =>
                     {
-                        this.ExecuteAddFriendCommand();
+                        this.ExecuteOpenGroupCommand();
                     },
                     () => true));
             }
         }
 
-        private void ExecuteAddFriendCommand()
+        private void ExecuteOpenGroupCommand()
         {
-            if (!this.AddFriendCommand.CanExecute(null))
+            if (!this.OpenGroupCommand.CanExecute(null))
             {
                 return;
             }
+
+            base.NavigationService.NavigateTo(NavigationPageKeys.GroupSummaryPageKey);
         }
 
         #endregion
+
     }
 }

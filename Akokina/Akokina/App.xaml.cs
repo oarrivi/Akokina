@@ -1,11 +1,14 @@
 ﻿using Akokina.Model;
 using Akokina.View;
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Akokina.Services;
 
 namespace Akokina
 {
@@ -14,6 +17,9 @@ namespace Akokina
         public App()
         {
             InitializeComponent();
+
+            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            RegisterServices();
 
             ISettingsController settings = new SettingsController();
 
@@ -26,8 +32,30 @@ namespace Akokina
             //{
             //    MainPage = new NavigationPage(new MainPage());
             //}
-            //MainPage = new NavigationPage(new MainPage());
-            MainPage = new FriendsPage();
+
+            var navPage = new NavigationPage(new MainPage());
+            var navService = new Services.NavigationService(navPage);
+            ConfigureNavigationService(navService);
+            SimpleIoc.Default.Register<Services.INavigationService>(() => navService);
+
+            MainPage = navPage;
+
+
+
+            //MainPage = new GroupsPage();
+            //MainPage = new FriendsPage();
+            //MainPage = new MainPage();
+        }
+
+        private void ConfigureNavigationService(Services.INavigationService service)
+        {
+            service.Map(NavigationPageKeys.HomePageKey, typeof(MainPage));
+            service.Map(NavigationPageKeys.GroupSummaryPageKey, typeof(View.GroupSummaryPage));
+        }
+
+        private void RegisterServices()
+        {
+            
         }
 
         bool IsConfigurationValid()

@@ -11,4 +11,10 @@ namespace Akokina
         public static readonly string CurrentUserIdKey = "CURRENT_USER_ID";
         public static readonly string WebServerUriKey = "WEB_SERVER_URI";
     }
+
+    public static class NavigationPageKeys
+    {
+        public static readonly string HomePageKey = "HOME_PAGE";
+        public static readonly string GroupSummaryPageKey = "GROUP_SUMMARY_PAGE";
+    }
 }

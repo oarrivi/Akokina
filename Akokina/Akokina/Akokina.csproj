@@ -38,11 +38,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GroupIdToImageSourceConverter.cs" />
     <Compile Include="Helpers\AvatarIdToImageSourceConverter.cs" />
     <Compile Include="Helpers\ImageResourceExtension.cs" />
     <Compile Include="Helpers\EmbeddedResourceKeyToImageSourceConverter.cs" />
+    <Compile Include="Helpers\ListViewItemTappedBehavior.cs" />
+    <Compile Include="Helpers\TappedItemEvetArgsToTappedItemConverter.cs" />
     <Compile Include="Model\AppController.cs" />
     <Compile Include="Model\MockDataFactory.cs" />
+    <Compile Include="Model\ObservableGroupSummary.cs" />
     <Compile Include="Model\ObservableUserSummary.cs" />
     <Compile Include="Model\SettingsController.cs" />
     <Compile Include="PropertyKeys.cs" />
@@ -60,10 +64,18 @@
     <Compile Include="Services\NavigationServices.cs" />
     <Compile Include="ViewModel\FriendsViewModel.cs" />
     <Compile Include="Model\ObservableUser.cs" />
+    <Compile Include="ViewModel\GroupSummaryViewModel.cs" />
+    <Compile Include="ViewModel\GroupsViewModel.cs" />
     <Compile Include="ViewModel\PageBaseViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="View\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupsPage.xaml.cs">
+      <DependentUpon>GroupsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupSummaryPage.xaml.cs">
+      <DependentUpon>GroupSummaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -150,9 +162,34 @@
     <EmbeddedResource Include="Images\avatar-5.png" />
     <EmbeddedResource Include="Images\avatar-6.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="View\GroupsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\FriendsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\group-0.png" />
+    <EmbeddedResource Include="Images\group-1.png" />
+    <EmbeddedResource Include="Images\group-10.png" />
+    <EmbeddedResource Include="Images\group-11.png" />
+    <EmbeddedResource Include="Images\group-2.png" />
+    <EmbeddedResource Include="Images\group-3.png" />
+    <EmbeddedResource Include="Images\group-4.png" />
+    <EmbeddedResource Include="Images\group-5.png" />
+    <EmbeddedResource Include="Images\group-6.png" />
+    <EmbeddedResource Include="Images\group-7.png" />
+    <EmbeddedResource Include="Images\group-8.png" />
+    <EmbeddedResource Include="Images\group-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\GroupSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
